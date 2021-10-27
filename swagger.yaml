@@ -1,0 +1,47 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: "nag-it"
+host: localhost:7777
+basePath: /v1/api
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /paste:
+    x-swagger-router-controller:
+    post:
+      operationId: createPaste
+      parameters:
+        - name: body
+          in: body
+          description: Body of the new paste
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              body:
+                type: string
+      responses:
+        '200':
+          description: id of new paste
+                  
+  /paste/{uuid}:
+    x-swagger-router-controller: paste-controller
+    parameters:
+      - name: uuid
+        description: uuid of paste
+        in: path
+        required: true
+        type: string
+    get:
+      operationId: getPaste
+      responses:
+        '200':
+          description: new paste object
+
