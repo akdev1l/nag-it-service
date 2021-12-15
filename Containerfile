@@ -1,5 +1,7 @@
-FROM fedora:latest
+FROM openjdk:19-jdk-slim 
 
-RUN dnf install -y nodejs vim
+RUN mkdir -p /app/{lib,bin,etc}
+COPY ./build/libs/snag-it-service.jar /app/lib/snag-it-service.jar
 
-ENV NODE_ENV=development
+WORKDIR /app
+ENTRYPOINT ["java", "-jar", "/app/lib/snag-it-service.jar"]

@@ -1,0 +1,24 @@
+plugins {
+    id 'application'
+    id 'org.springframework.boot' version '2.6.1'
+}
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+repositories {
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.6.RELEASE'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.14.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
+
+    implementation 'org.springdoc:springdoc-openapi-ui:1.5.12'
+
+    implementation 'com.h2database:h2'
+}
+application {
+    mainClass = 'xyz.akdev.snagit.Main'
+}
